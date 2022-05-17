@@ -1,3 +1,4 @@
+import 'package:app_news/src/services/news_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,6 @@ class _navegacion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final navigationModel = Provider.of<_NavegacionModel>(context);
 
     return BottomNavigationBar(
@@ -46,7 +46,11 @@ class _paginas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navModel = Provider.of<_NavegacionModel>(context);
+    final newServices = Provider.of<NewsServices>(context);
+
     return PageView(
+      controller: navModel.pageController,
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
         Container(
@@ -54,7 +58,7 @@ class _paginas extends StatelessWidget {
         ),
         Container(
           color: Colors.green,
-        )
+        ),
       ],
     );
   }
@@ -62,6 +66,7 @@ class _paginas extends StatelessWidget {
 
 class _NavegacionModel with ChangeNotifier {
   int _paginaActual = 0;
+  PageController _pageController = new PageController();
 
   int get paginaActual => this._paginaActual;
 
@@ -69,6 +74,12 @@ class _NavegacionModel with ChangeNotifier {
 
   set paginaActual(int valor) {
     this._paginaActual = valor;
+
+    _pageController.animateToPage(valor,
+        duration: Duration(milliseconds: 50), curve: Curves.easeOut);
+
     notifyListeners();
   }
+
+  PageController get pageController => this._pageController;
 }
