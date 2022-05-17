@@ -1,3 +1,4 @@
+import 'package:app_news/src/pages/tab1_page.dart';
 import 'package:app_news/src/services/news_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,15 +48,14 @@ class _paginas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final navModel = Provider.of<_NavegacionModel>(context);
-    final newServices = Provider.of<NewsServices>(context);
 
     return PageView(
       controller: navModel.pageController,
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
-        Container(
-          color: Colors.red,
-        ),
+        
+        Tab1Screen(),
+
         Container(
           color: Colors.green,
         ),

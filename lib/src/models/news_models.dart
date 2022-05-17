@@ -43,7 +43,7 @@ class Article {
     this.url,
     this.urlToImage,
     this.publishedAt,
-    required this.content,
+    this.content,
   });
 
   Source source;
@@ -53,7 +53,7 @@ class Article {
   String? url;
   String? urlToImage;
   DateTime? publishedAt;
-  String content;
+  String? content;
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
         source: Source.fromJson(json["source"]),
@@ -88,7 +88,7 @@ class Source {
   String name;
 
   factory Source.fromJson(Map<String, dynamic> json) => Source(
-        id: json["id"] == null ? null : json["id"],
+        id: json["id"] ?? '',
         name: json["name"],
       );
 
