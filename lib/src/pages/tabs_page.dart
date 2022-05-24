@@ -1,4 +1,5 @@
 import 'package:app_news/src/pages/tab1_page.dart';
+import 'package:app_news/src/pages/tab2_page.dart';
 import 'package:app_news/src/services/news_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,6 +56,7 @@ class _paginas extends StatelessWidget {
       children: <Widget>[
         
         Tab1Screen(),
+        Tab2Page(),
 
         Container(
           color: Colors.green,
